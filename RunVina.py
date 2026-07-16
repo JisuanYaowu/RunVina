@@ -55,21 +55,22 @@ vina_box_info = None
 vina_box_object = None
 
 def __init__(self):
-    self.menuBar.addcascademenu('Plugin', 'Vina Docking Plugin', label='Vina Docking Plugin')
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'command', 'SelectReceptor', label='Select Receptor',
+    self.menuBar.addcascademenu('Plugin', 'RunVina Plugin', label='RunVina Plugin')
+    self.menuBar.addmenuitem('RunVina Plugin', 'command', 'SelectReceptor', label='Select Receptor',
                              command=lambda s=self: select_receptor())
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'command', 'SelectLigand', label='Select Ligand',
+    self.menuBar.addmenuitem('RunVina Plugin', 'command', 'SelectLigand', label='Select Ligand',
                              command=lambda s=self: select_ligand())
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'separator')
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'command', 'GetBox', label='Get Box (from selection)',
+    self.menuBar.addmenuitem('RunVina Plugin', 'separator')
+    self.menuBar.addmenuitem('RunVina Plugin', 'command', 'GetBox', label='Get Box (from selection)',
                              command=lambda s=self: getbox())
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'command', 'KeepBox', label='Keep Current Box',
+    self.menuBar.addmenuitem('RunVina Plugin', 'command', 'KeepBox', label='Keep Current Box',
                              command=lambda s=self: keep_box())
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'separator', 'sep2')
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'command', 'RunVina', label='Run Vina Docking',
+    self.menuBar.addmenuitem('RunVina Plugin', 'separator', 'sep2')
+    self.menuBar.addmenuitem('RunVina Plugin', 'command', 'RunVina', label='Run Vina Docking',
                              command=lambda s=self: run_vina_docking())
-    self.menuBar.addmenuitem('Vina Docking Plugin', 'command', 'VinaHelp', label='Help',
+    self.menuBar.addmenuitem('RunVina Plugin', 'command', 'VinaHelp', label='Help',
                              command=lambda s=self: show_help())
+
 
 def printf(str):
     if sys.version < '3':
