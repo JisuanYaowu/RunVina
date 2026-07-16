@@ -53,3 +53,35 @@ select_receptor()      # open file dialog for receptor
 select_ligand()        # open file dialog for ligand
 getbox()               # create box from current selection
 run_vina_docking()     # start docking with default parameters
+
+Advanced parameters can be passed directly: run_vina_docking(exhaustiveness=16, num_modes=20, vina_path="/usr/bin/vina")
+### 📁 Output files
+After docking, the ligand’s folder will contain:
+
+vina_config_YYYYMMDD_HHMMSS.txt	Configuration used for Vina
+vina_log_YYYYMMDD_HHMMSS.log	Raw output from Vina
+vina_summary_YYYYMMDD_HHMMSS.log	Human‑readable summary with scores and file locations
+docking_out_YYYYMMDD_HHMMSS.pdbqt	Docked poses (loaded automatically into PyMOL)
+Each run gets a unique timestamp – previous results are never overwritten.
+### ⚙️ Configuration
+Default docking parameters are exhaustiveness = 8 and num_modes = 9.
+You can change them permanently by editing the default values in the run_vina_docking() function, or by passing them when calling the command.
+### 🔧 Troubleshooting
+Q: The menu text is invisible on my system.
+A: This can happen with some PyMOL GUI themes. Try running cmd.set("gui_theme", "classic") in the console and restart PyMOL. Alternatively, use the command‑line functions – they work identically.
+Q: Vina complains about “File format not supported”.
+A: Make sure your files are valid PDBQT. This plugin does not convert PDB to PDBQT; you must prepare them beforehand.
+Q: vina is not found.
+A: Provide the full path to the Vina executable:
+run_vina_docking(vina_path="C:/Program Files/vina/vina.exe").
+Q: I want the output in the receptor folder instead of the ligand folder.
+A: Edit the line ligand_dir = os.path.dirname(vina_ligand_file) in the script to use vina_receptor_file.
+### 🤝 Credits
+    Box drawing and selection logic adapted from the GetBox Plugin by Mengwu Xiao (Hunan University).
+    Original bounding‑box code based on drawBoundingBox.py by Jason Vertrees.
+    Vina docking integration, file management, and graphical interface added by Jisuan Yaowu (2026).
+### 📜 License
+This project is licensed under the GNU General Public License v3.0 – see the LICENSE file for details.
+The GetBox portion retains its original GPLv3 license, and all modifications are released under the same terms.
+### 📬 Contact
+For questions, suggestions, or bug reports, please open an issue on this repository or contact 微信公众：计算药物
