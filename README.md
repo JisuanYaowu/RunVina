@@ -43,43 +43,65 @@ It has six submenus: Select Receptor, Select Ligand，Get Box (from selection)�
    In the PyMOL viewer, **ctrl‑click** a few residues around the binding site, then click `Get Box (from selection)`. A red wireframe box appears.
 4. **Run docking**  
    Click `Run Vina Docking`. The console shows progress, scores, and the results are loaded as `docking_results`.
-### Command line interface
-All actions can also be executed by typing commands in the PyMOL console:
+## ⌨️ Command Line Interface
 
-```python
-select_receptor()      # open file dialog for receptor
-select_ligand()        # open file dialog for ligand
-getbox()               # create box from current selection
-run_vina_docking()     # start docking with default parameters
+All functions are also accessible via PyMOL console commands:
 
-Advanced parameters can be passed directly: run_vina_docking(exhaustiveness=16, num_modes=20, vina_path="/usr/bin/vina")
-### 📁 Output files
-After docking, the ligand’s folder will contain:
+select_receptor()      # Open file dialog to select the receptor
+select_ligand()        # Open file dialog to select the ligand
+getbox()               # Create a docking box from the current selection
+run_vina_docking()     # Start docking with default parameters
 
-vina_config_YYYYMMDD_HHMMSS.txt	Configuration used for Vina
-vina_log_YYYYMMDD_HHMMSS.log	Raw output from Vina
-vina_summary_YYYYMMDD_HHMMSS.log	Human‑readable summary with scores and file locations
-docking_out_YYYYMMDD_HHMMSS.pdbqt	Docked poses (loaded automatically into PyMOL)
-Each run gets a unique timestamp – previous results are never overwritten.
-### ⚙️ Configuration
-Default docking parameters are exhaustiveness = 8 and num_modes = 9.
-You can change them permanently by editing the default values in the run_vina_docking() function, or by passing them when calling the command.
-### 🔧 Troubleshooting
-Q: The menu text is invisible on my system.
-A: This can happen with some PyMOL GUI themes. Try running cmd.set("gui_theme", "classic") in the console and restart PyMOL. Alternatively, use the command‑line functions – they work identically.
-Q: Vina complains about “File format not supported”.
-A: Make sure your files are valid PDBQT. This plugin does not convert PDB to PDBQT; you must prepare them beforehand.
-Q: vina is not found.
-A: Provide the full path to the Vina executable:
-run_vina_docking(vina_path="C:/Program Files/vina/vina.exe").
-Q: I want the output in the receptor folder instead of the ligand folder.
-A: Edit the line ligand_dir = os.path.dirname(vina_ligand_file) in the script to use vina_receptor_file.
-### 🤝 Credits
-    Box drawing and selection logic adapted from the GetBox Plugin by Mengwu Xiao (Hunan University).
-    Original bounding‑box code based on drawBoundingBox.py by Jason Vertrees.
-    Vina docking integration, file management, and graphical interface added by Jisuan Yaowu (2026).
-### 📜 License
-This project is licensed under the GNU General Public License v3.0 – see the LICENSE file for details.
+Advanced parameters can be passed directly:
+
+run_vina_docking(exhaustiveness=16, num_modes=20, vina_path="/usr/bin/vina")
+
+## 📁 Output Files
+
+After each docking run, the following files are generated in the **ligand's folder**:
+
+| File | Description |
+|------|-------------|
+| `vina_config_YYYYMMDD_HHMMSS.txt` | Vina configuration used for this run |
+| `vina_log_YYYYMMDD_HHMMSS.log` | Raw output log from Vina |
+| `vina_summary_YYYYMMDD_HHMMSS.log` | Human‑readable summary with scores and file paths |
+| `docking_out_YYYYMMDD_HHMMSS.pdbqt` | Docked poses (automatically loaded into PyMOL) |
+
+Each run receives a unique timestamp, so previous results are never overwritten.
+
+## ⚙️ Configuration
+
+Default docking parameters are **exhaustiveness = 8** and **num_modes = 9**.  
+You can permanently change them by editing the default values in the `run_vina_docking()` function, or override them on the fly:
+
+run_vina_docking(exhaustiveness=16, num_modes=20)
+
+## 🔧 Troubleshooting
+
+**Q: The menu text is invisible in PyMOL.**  
+A: Certain GUI themes can cause this. Try running `cmd.set("gui_theme", "classic")` in the PyMOL console and restart. Alternatively, use the command-line functions – they work identically.
+
+**Q: Vina reports "File format not supported".**  
+A: Ensure your receptor and ligand files are valid PDBQT files. This plugin does not convert PDB to PDBQT; you must prepare them beforehand (e.g., with MGLTools).
+
+**Q: The system cannot find the `vina` command.**  
+A: Provide the full path to the Vina executable when calling the function:  
+`run_vina_docking(vina_path="C:/Program Files/vina/vina.exe")`
+
+**Q: I want the output to be saved in the receptor folder instead of the ligand folder.**  
+A: Open `rvina.py`, locate the line `ligand_dir = os.path.dirname(vina_ligand_file)` and change `vina_ligand_file` to `vina_receptor_file`.
+
+## 🤝 Credits
+
+- Box drawing and selection logic adapted from the [GetBox Plugin](https://github.com/MengwuXiao/Getbox-PyMOL-Plugin) by **Mengwu Xiao** (Hunan University).
+- Original bounding‑box code inspired by **drawBoundingBox.py** by **Jason Vertrees** (PyMOLWiki).
+- Vina docking integration, file management, and graphical interface added by **Jisuan Yaowu (Computational Drug)**, 2026.
+
+## 📜 License
+
+This project is licensed under the **GNU General Public License v3.0** – see the [LICENSE](LICENSE) file for details.  
 The GetBox portion retains its original GPLv3 license, and all modifications are released under the same terms.
-### 📬 Contact
-For questions, suggestions, or bug reports, please open an issue on this repository or contact 微信公众：计算药物
+
+## 📬 Contact
+
+For questions, suggestions, or bug reports, please open an issue on this repository or follow our WeChat official account: **计算药物** (Computational Drug).
