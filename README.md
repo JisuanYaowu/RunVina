@@ -33,7 +33,7 @@ It has six submenus: Select Receptor, Select Ligand，Get Box (from selection)�
 
 ### 🚦 Usage
 
-### Menu workflow (recommended)
+## Menu workflow (recommended)
 
 1. **Select Receptor**  
    Click `Plugin → Vina Docking Plugin → Select Receptor` and choose your receptor `.pdbqt` file.
@@ -43,9 +43,7 @@ It has six submenus: Select Receptor, Select Ligand，Get Box (from selection)�
    In the PyMOL viewer, **ctrl‑click** a few residues around the binding site, then click `Get Box (from selection)`. A red wireframe box appears.
 4. **Run docking**  
    Click `Run Vina Docking`. The console shows progress, scores, and the results are loaded as `docking_results`.
-
 ### Command line interface
-
 All actions can also be executed by typing commands in the PyMOL console:
 
 ```python
