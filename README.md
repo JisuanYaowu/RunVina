@@ -1,19 +1,20 @@
-## RunVina - A PyMOL Plugin for One‑Click AutoDock Vina Docking
+### RunVina - A PyMOL Plugin for One‑Click AutoDock Vina Docking
 **RunVina** brings the power of AutoDock Vina directly into the PyMOL interface.  
 Define the binding box by simply clicking on active‑site residues, load your receptor and ligand PDBQT files through file dialogs, and start docking with a single menu click.  
 All results are automatically saved in the **ligand’s folder** – clean, organised, and ready for analysis.
-# Download
+### Download
 https://github.com/JisuanYaowu/RunVina/blob/main/RunVina.py
-#  📥 Installation
+###  📥 Installation
  Download the latest `run_vina.py` from this repository.
-   <img width="3784" height="2515" alt="图片1" src="https://github.com/user-attachments/assets/5c9a4b71-6bd4-4c75-9790-9da120740133" />
+ Open PyMOL->Plugin->(Plugin Manager)->Install (New) Plugin->Find RunVina.py ->Restart PyMOL->Finished. 
+Restart PyMOL. You will see a new menu: **Plugin → Vina Docking Plugin**.
+It has six submenus: Select Receptor, Select Ligand，Get Box (from selection)，Keep Current Box，Run Vina Docking，Help.
+ <img width="3784" height="2515" alt="图片1" src="https://github.com/user-attachments/assets/5c9a4b71-6bd4-4c75-9790-9da120740133" />
 <img width="2922" height="2255" alt="图片2" src="https://github.com/user-attachments/assets/ae2d2cbe-71dd-4810-9661-a573e260fe42" />
 <img width="2492" height="1388" alt="图片3" src="https://github.com/user-attachments/assets/1069c883-f6cc-422c-ac86-6151075c1713" />
 <img width="1098" height="568" alt="图片4" src="https://github.com/user-attachments/assets/b765bbb5-5a6b-47ef-a115-756010e63282" />
-Open PyMOL->Plugin->(Plugin Manager)->Install (New) Plugin->Find RunVina.py ->Restart PyMOL->Finished. 
-Restart PyMOL. You will see a new menu: **Plugin → Vina Docking Plugin**.
-It has six submenus: Select Receptor, Select Ligand，Get Box (from selection)，Keep Current Box，Run Vina Docking，Help.
-## ✨ Features
+
+### ✨ Features
 
 - 🖱️ **Visual box definition** – click residues in PyMOL and the box is generated instantly (based on the well‑known GetBox plugin).
 - 📂 **File‑dialog loading** – select receptor/ligand `.pdbqt` files directly from the menu, no need to drag & drop.
@@ -23,14 +24,14 @@ It has six submenus: Select Receptor, Select Ligand，Get Box (from selection)�
 - 🧩 **Extensible** – all functions are also available as PyMOL commands (`select_receptor()`, `run_vina_docking()`, etc.).
 - 📜 **Respects original work** – box drawing code is adapted from GetBox (Mengwu Xiao, GPLv3), with full attribution.
 
-## 📋 Requirements
+### 📋 Requirements
 
 - **PyMOL** ≥ 2.4 (open‑source or Schrödinger version)
 - **AutoDock Vina** (the `vina` executable must be in your system PATH)
 - **Python** with `tkinter` (usually included with PyMOL’s Python)
 - Pre‑prepared receptor and ligand files in **PDBQT format** (e.g. generated with MGLTools or `prepare_receptor4.py`)
 
-## 🚦 Usage
+### 🚦 Usage
 
 ### Menu workflow (recommended)
 
